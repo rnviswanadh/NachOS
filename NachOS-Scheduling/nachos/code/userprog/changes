@@ -1,0 +1,13 @@
+for algo 3
+changed Interrupt::OneTick()
+-> incremented currentThread->numTick++;
+
+changed Machine::Run()
+-> put the running thread to readylist if it has exceeded its burst time
+	if(currentThread->numTick>=200){									// change this number according to the average burst times
+		if(algo==3) currentThread->YieldCPU();
+	}
+
+changed 
+-> initialized the numTick to 0 in Initialize after the thread is set to running
+	currentThread->numTick = 0;
